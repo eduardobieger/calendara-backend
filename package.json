@@ -1,14 +1,14 @@
 {
   "name": "calendara-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Calendara is a calendar app to schedule your events.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Eduardo Bieger",
+  "license": "MIT",
   "dependencies": {
     "fastify": "^4.25.2"
   }
