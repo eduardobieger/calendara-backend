@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "@fastify/postgres": "^5.2.2",
-    "fastify": "^4.25.2",
+    "fastify": "^4.26.0",
     "pg": "^8.11.3"
   }
 }
