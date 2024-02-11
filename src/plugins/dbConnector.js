@@ -1,18 +1,11 @@
-const fastifyPlugin = require("fastify-plugin");
+const fastify = require("fastify")();
+const env = require("../../config/env");
+const fastifyPostgres = require("@fastify/postgres");
 
-async function dbConnector(fastify, options) {
-  fastify.register(require("@fastify/postgres"), {
-    connectionString: "postgres://postgres@192.168.100.5/calendara-db"
-  });
-
-  fastify.get("/users/:id", function (request, reply) {
-    fastify.pg.query(
-      "SELECT id, username, hash FROM users WHERE id=$1", [request.params.id],
-      function onResult(err, result) {
-        reply.send(err || result);
-      }
-    );
+async function dbConnector() {
+  fastify.register(fastifyPostgres, {
+    connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}/${env.postgresqlDatabase}`
   });
 }
 
-module.exports = fastifyPlugin(dbConnector);
+module.exports = dbConnector;
