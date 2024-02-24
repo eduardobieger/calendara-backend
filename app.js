@@ -10,7 +10,7 @@ fastify.register(require("@fastify/cors"), {
   allowedHeaders: "*"
 });
 fastify.register(require("@fastify/postgres"), {
-  connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}:${env.postgresqlPort}/${env.postgresqlDatabase}`
+  connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}/${env.postgresqlDatabase}`
 });
 
 // registro das rotas
