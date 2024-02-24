@@ -1,5 +1,5 @@
 const fastify = require("fastify")({
-  logger: true
+  logger: true,
 });
 const env = require("./config/env");
 
@@ -7,15 +7,15 @@ const env = require("./config/env");
 fastify.register(require("@fastify/cors"), {
   origin: "*",
   methods: "*",
-  allowedHeaders: "*"
+  allowedHeaders: "*",
 });
 fastify.register(require("@fastify/postgres"), {
-  connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}/${env.postgresqlDatabase}`
+  connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}/${env.postgresqlDatabase}`,
 });
 
 // registro das rotas
-fastify.register(require("./src/routes/index.js"));
-fastify.register(require("./src/routes/testRoutes"));
+fastify.register(require("./src/routes/users"));
+fastify.register(require("./src/routes/appointments"));
 
 // inicialização do servidor
 fastify.listen({ port: 3000, host: "0.0.0.0" }, (err) => {
