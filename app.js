@@ -3,9 +3,14 @@ const fastify = require("fastify")({
 });
 const env = require("./config/env");
 
-// registro dos plugins de conexão
+// registro dos plugins
+fastify.register(require("@fastify/cors"), {
+  origin: "*",
+  methods: "*",
+  allowedHeaders: "*"
+});
 fastify.register(require("@fastify/postgres"), {
-  connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${postgresqlHost}/${env.postgresqlDatabase}`
+  connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}:${env.postgresqlPort}/${env.postgresqlDatabase}`
 });
 
 // registro das rotas
