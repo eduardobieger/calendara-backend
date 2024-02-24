@@ -5,7 +5,7 @@ async function usersPostController(fastify, request, reply) {
 
   try {
     fastify.pg.query(
-      "INSERT INTO users_table(username, password, email, display_name) VALUES($1, $2, $3, $4)",
+      "INSERT INTO users_table(username, password, email, display_name) VALUES($1, crypt($2, gen_salt(bf)), $3, $4)",
       [username, password, email, displayName]
     );
 
