@@ -6,7 +6,7 @@ async function users(fastify, options) {
   });
 
   fastify.post("/users", async (request, reply) => {
-    return await usersPostController(fastify, request);
+    return await usersPostController(fastify, request, reply);
   });
 }
 
