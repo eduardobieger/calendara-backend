@@ -13,6 +13,8 @@ async function usersPostController(fastify, request, reply) {
       [username, hashedPassword, email, displayName]
     );
 
+    fastify.log.info(username, hashedPassword, email, displayName);
+
     return reply.code(201).send({ success: true });
   } catch (err) {
     fastify.log.error(err);
