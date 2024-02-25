@@ -15,7 +15,7 @@ async function usersPostController(fastify, request, reply) {
     return reply.code(201).send({ success: true });
   } catch (err) {
     fastify.log.error(err);
-    return reply.code(500).send({ success: false });
+    return reply.code(500).send({ message: err });
   }
 }
 
