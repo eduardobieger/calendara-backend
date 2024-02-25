@@ -5,7 +5,7 @@ async function usersPostController(fastify, request, reply) {
   const { username, email, password, displayName } = request.body;
 
   try {
-    const salt = await bcrypt.genSalt(env.bcryptSaltRounds);
+    const salt = await bcrypt.genSalt(parseInt(env.bcryptSaltRounds));
     const hashedPassword = await bcrypt.hash(password, salt);
 
     fastify.pg.query(
