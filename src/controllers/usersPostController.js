@@ -5,7 +5,8 @@ async function usersPostController(fastify, request, reply) {
   const { username, email, password, displayName } = request.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, env.bcryptSaltRounds);
+    const salt = await bcrypt.genSalt(env.bcryptSaltRounds);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     fastify.pg.query(
       "INSERT INTO users_table(username, password, email, display_name) VALUES($1, $2, $3, $4)",
