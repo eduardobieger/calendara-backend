@@ -3,7 +3,7 @@ CREATE DATABASE calendara_database;
 CREATE TABLE users_table(
   user_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   username VARCHAR(30) UNIQUE NOT NULL,
-  password VARCHAR(30) NOT NULL,
+  password TEXT NOT NULL,
   email TEXT UNIQUE NOT NULL,
   display_name TEXT NOT NULL
 );
