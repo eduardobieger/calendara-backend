@@ -9,11 +9,9 @@ async function usersPostController(fastify, request, reply) {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     fastify.pg.query(
-      "INSERT INTO users_table(username, password, email, display_name) VALUES($1, $2, $3, $4)",
+      "INSERT INTO users_table(username, password, email, display_name) VALUES($1, $2, $3, $4) ON CONFLICT DO NOTHING",
       [username, hashedPassword, email, displayName]
     );
-
-    console.log(username, hashedPassword, email, displayName);
 
     return reply.code(201).send({ success: true });
   } catch (err) {
