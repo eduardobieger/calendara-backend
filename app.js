@@ -5,9 +5,10 @@ const env = require("./config/env");
 
 // registro dos plugins
 fastify.register(require("@fastify/cors"), {
-  origin: "*",
-  methods: "*",
-  allowedHeaders: "*",
+  origin: "http://localhost:5173",
+  methods: "GET, POST, PUT, DELETE, OPTIONS",
+  allowedHeaders: "Content-Type",
+  credentials: true,
 });
 fastify.register(require("@fastify/postgres"), {
   connectionString: `postgres://${env.postgresqlUsername}:${env.postgresqlPassword}@${env.postgresqlHost}/${env.postgresqlDatabase}`,
