@@ -19,7 +19,7 @@ fastify.register(require("./src/routes/users"));
 fastify.register(require("./src/routes/appointments"));
 
 // inicialização do servidor
-fastify.listen({ port: 3000, host: "0.0.0.0" }, (err) => {
+fastify.listen({ port: 3000 }, (err) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
