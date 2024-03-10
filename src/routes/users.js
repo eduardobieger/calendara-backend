@@ -7,7 +7,7 @@ async function users(fastify, options) {
     return await usersGetAllController(fastify, request, reply);
   });
 
-  fastify.post("/users", async (request, reply) => {
+  fastify.post("/signup", async (request, reply) => {
     return await usersPostController(fastify, request, reply);
   });
 
