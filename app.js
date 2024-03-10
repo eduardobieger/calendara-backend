@@ -5,7 +5,7 @@ const env = require("./config/env");
 
 // registro dos plugins
 fastify.register(require("@fastify/cors"), {
-  origin: "http://localhost:5173",
+  origin: true,
   methods: "GET, POST, PUT, DELETE, OPTIONS",
   allowedHeaders: "Content-Type",
   credentials: true,
