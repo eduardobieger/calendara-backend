@@ -2,7 +2,7 @@ const env = require("../../config/env");
 const bcrypt = require("bcrypt");
 
 async function usersPostController(fastify, request, reply) {
-  const { username, email, password, displayName } = request.body;
+  const { username, email, password } = request.body;
 
   try {
     const salt = await bcrypt.genSalt(parseInt(env.bcryptSaltRounds));
@@ -10,7 +10,7 @@ async function usersPostController(fastify, request, reply) {
 
     fastify.pg.query(
       "INSERT INTO users_table(username, password, email, display_name) VALUES($1, $2, $3, $4) ON CONFLICT DO NOTHING",
-      [username, hashedPassword, email, displayName]
+      [username, hashedPassword, email, username]
     );
 
     return reply.code(201).send({ success: true });
