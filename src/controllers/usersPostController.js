@@ -10,7 +10,7 @@ async function usersPostController(fastify, request, reply) {
 
     fastify.pg.query(
       "INSERT INTO users_table(username, password, email, display_name) VALUES($1, $2, $3, $4) ON CONFLICT DO NOTHING",
-      [username, hashedPassword, email, username]
+      [username, hashedPassword, email, username],
     );
 
     return reply.code(201).send({ success: true });

@@ -4,7 +4,10 @@ async function authenticate(fastify, request, reply) {
   const { username, email, password, displayName } = request.body;
 
   try {
-    const result = await fastify.pg.query("SELECT * FROM users_table WHERE username = $1", [username]);
+    const result = await fastify.pg.query(
+      "SELECT * FROM users_table WHERE username = $1",
+      [username],
+    );
 
     const dbUser = result.rows[0];
 
@@ -32,4 +35,3 @@ async function authenticate(fastify, request, reply) {
 }
 
 module.exports = authenticate;
-

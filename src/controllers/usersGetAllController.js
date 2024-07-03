@@ -3,7 +3,7 @@ const env = require("../../config/env");
 async function usersGetAllController(fastify, request, reply) {
   try {
     const result = await fastify.pg.query(
-      "SELECT user_id, username, email, display_name FROM users_table"
+      "SELECT user_id, username, email, display_name FROM users_table",
     );
 
     return reply.code(200).send({ result });
